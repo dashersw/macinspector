@@ -1,0 +1,46 @@
+{
+  "name": "macinspector",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome DevTools for native AppKit, UIKit and registered SwiftUI apps, with macOS Accessibility attachment",
+  "bin": {
+    "macinspector": "bin/macinspector.mjs"
+  },
+  "scripts": {
+    "build": "swift build",
+    "build:frontend": "node frontend/build.mjs",
+    "prepare": "npm run build:frontend",
+    "prepack": "npm run build:frontend",
+    "demo": "node bin/macinspector.mjs demo",
+    "test": "node --test --test-concurrency=1 test/*.test.mjs",
+    "test:native": "swift test",
+    "check": "node --check src/simulator-pointer.mjs && node --check src/ios.mjs && node --check bin/macinspector.mjs && node --check src/relay.mjs && node --check src/session.mjs && node --check src/backends.mjs && node --check src/console.mjs && node --check src/css.mjs && node --check src/cdp.mjs && node --check src/source-debugger.mjs && node --check src/lldb-transport.mjs && node --check src/frontend.mjs && node --check src/targets.mjs && node --check frontend/build.mjs && node --check frontend/patches.mjs && node --check src/discovery.mjs && node --check src/changes.mjs && node --check frontend/native-panels.mjs && node --check frontend/hosted-zoom.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "bin",
+    "src",
+    "native",
+    "Sources",
+    "demo",
+    "frontend",
+    "Package.swift",
+    ".build/devtools",
+    "!.build/devtools/downloads.json",
+    "LICENSE",
+    "docs",
+    "README.md"
+  ],
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@codemirror/legacy-modes": "6.5.4",
+    "es-module-lexer": "3.0.3",
+    "prettier": "^3.9.9"
+  }
+}

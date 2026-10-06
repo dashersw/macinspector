@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  />
+  <title>MacInspector</title>
+  <style>
+    body {
+      margin: 32px;
+      font: 15px system-ui;
+      background: #f5f5f7;
+      color: #202124;
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    p {
+      color: #5f6368;
+      line-height: 1.6;
+    }
+    code {
+      display: block;
+      background: white;
+      padding: 16px;
+      border-radius: 10px;
+      overflow-wrap: anywhere;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 24px;
+    }
+    button {
+      font: inherit;
+      padding: 8px 14px;
+      margin: 12px 0;
+      cursor: pointer;
+    }
+  </style>
+  <main>
+    <h1 id="title">MacInspector</h1>
+    <p id="status">Connecting to the native app…</p>
+    <p><a id="open">Open DevTools with Swift highlighting</a></p>
+    <code id="link"></code><button id="copy">Copy Chrome DevTools URL</button>
+    <p>
+      Enable the picker in DevTools, then click a control in the actual app
+      window. Appearance edits use native setters. The console operates on
+      native UI proxies.
+    </p>
+    <img id="preview" alt="Actual native app pixels" />
+  </main>
+  <script type="module">
+    const state = await fetch("/state").then((r) => r.json());
+    document.querySelector("#title").textContent = state.title;
+    document.querySelector("#status").textContent =
+      `${state.backend} · ${state.nodes.length} native elements`;
+    document.querySelector("#link").textContent = state.frontend;
+    document.querySelector("#open").href = state.frontend;
+    document.querySelector("#copy").onclick = () =>
+      navigator.clipboard.writeText(state.frontend);
+    if (state.capabilities.includes("screenshot")) {
+      const img = document.querySelector("#preview");
+      const refresh = () => {
+        img.src = "/preview.png?t=" + Date.now();
+      };
+      img.onload = () => setTimeout(refresh, 1500);
+      img.onerror = () => setTimeout(refresh, 1500);
+      refresh();
+    }
+  </script>
+</html>

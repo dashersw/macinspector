@@ -1,0 +1,16 @@
+{
+  "revision": "66df492aaa0129d090937e933dd44c5389ab24d2",
+  "chromeVersion": "154.0.8037.95",
+  "patchVersion": 4,
+  "grammarVersion": "6.5.4",
+  "patches": {
+    "core/host/host.js": "e571073d4227ef77ad581a0d4b7f7ad051ac7e1fab05f00b2351f4f646b60bdc",
+    "entrypoints/main/main.js": "9a58835f89984db07827b8be58a57f7360a2a19da9d347ca9595664e6c858f59",
+    "panels/event_listeners/event_listeners.js": "95e126c7743a49ec76bdd33e27135ce74410a74c6a61ce21ac7f6f04c4665683",
+    "core/sdk/sdk.js": "dad53c460aa1d16294a1032932c603b59c0cdd0f9993cd7c252125d6d7a05786",
+    "models/bindings/bindings.js": "445dfb352ef365b5aee5677ef282de952e4455706d5cfec5a7a662af06a778fd",
+    "core/common/common.js": "2d79f2d054b8c291b7ca4500b27ac8cfad495a2104c997672c3e8d2e3d3b5bb5",
+    "ui/components/code_highlighter/code_highlighter.js": "d4f3fafe3665328b10afae042667a7b1d252bd33b50cdc2c54a54f28b29c3e25",
+    "entrypoints/devtools_app/devtools_app.js": "236290074623531b679d0d56ac3934a87198fb8b99bb3a6ff9eba207209270bc"
+  }
+}
